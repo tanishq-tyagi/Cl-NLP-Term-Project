@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@font-face {
+  font-family: "iAMono";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://assets.codepen.io/2153413/iAWriterMonoS-Regular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Archimotov";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://assets.codepen.io/2153413/Demoarchimotov01Black-8MD5g.otf")
+    format("woff2");
+}
+
+:root {
+  --step-0: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
+  --step-1: clamp(2.4883rem, 2.1597rem + 1.6433vw, 3.4332rem);
+  --step-2: clamp(1.44rem, 1.3295rem + 0.5527vw, 1.7578rem);
+  --color-dark: #222;
+  --color-dark-translucent: hsla(0, 0%, 13%, 0.2);
+  --font-base: "iAMono", "FallbackFont", sans-serif;
+  --font-headers: "Archimotov", "FallbackFont", sans-serif;
+  --texture-noise: url(https://assets.codepen.io/2153413/noise.png);
+  --texture-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%236c6c6c' fill-opacity='0.2'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+html {
+  display: flex;
+  flex-direction: column;
+  background: #f0f0e8;
+  background-image: var(--texture-noise);
+  position: relative;
+}
+
+html::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  width: 100%;
+  background-image: var(--texture-grid);
+  opacity: 0.8;
+  z-index: -10;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-dark);
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.dashedContainer {
+  border: 3px dashed var(--color-dark);
+  width: 60vw;
+  height: 90vh;
+}
+
+h1 {
+  font-family: var(--font-headers);
+  font-size: var(--step-1);
+}
+
+input,
+p,
+button {
+  font-family: var(--font-base);
+}
+
+p {
+  font-size: var(--step-0);
+}
+
+button {
+  border: dashed 1px var(--color-dark);
+}
+
+input {
+  background: var(--color-dark-translucent);
+  border: 1px dashed var(--color-dark);
+}
+
+span {
+  font-family: var(--font-base);
+  font-size: 13px;
+}
+
+button:disabled {
+  background-color: red; 
+  color: var(--color-dark);
+  border: 2px dashed #999999;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
